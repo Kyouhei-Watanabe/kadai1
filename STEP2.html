@@ -7,19 +7,17 @@
     <title>Document</title>
 </head>
 <body>
+    <script>
+        const btn = () => {
+            const name = document.getElementById('name').value;
+            const task = document.getElementById('task').value;
+            console.log(name,task);
+        }
+    </script>
     <form>
     <p>・ユーザー名：<input type="text" id="name"></p>
     <p>・タスク<input type="text" id="task"></p>
-    <input type="button" value="登録" id="Button">
-    <script>function buttonClilck(){
-        let nameText = document.getElementById('name');
-        console.log(element.value);
-        let nameTask = document.getElementById('task');
-        console.log(element.value);
-        let check = document.getElementById('Button')
-        check.addEventListener('click','buttonClick')
-    }
-    </script>
+    <input type="button" value="登録" onclick="btn()">
     </form>
 </body>
 </html>
