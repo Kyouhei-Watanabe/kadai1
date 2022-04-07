@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const List = []
+
+        const btn = () =>{
+            const name = document.getElementById("name")
+            const task = document.getElementById("task")
+
+            List.push({ name: name.value, task: task.value })
+            List.forEach((t, idx) => console.log(`${idx}: ${t.name}, ${t.task}`))
+
+
+        }
+    </script>
+    <form action="">
+        <li>ユーザーネーム：<input type="text" id="name"></li>
+        <li>タスク：<input type="text" id="task"></li>
+        <li><button type="button" onclick="btn()">登録</button></li>
+    </form>
+</body>
+</html>
