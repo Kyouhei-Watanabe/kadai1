@@ -7,6 +7,80 @@
     <title>Document</title>
 </head>
 <body>
-    
+    <script>
+    const tasksList = [];
+
+    const onClickButton = () => {
+    const todoList = document.querySelector("#todo-list");
+    const name = document.querySelector("#name");
+    const task = document.querySelector("#task");
+
+    tasksList.push({ name: name.value, task: task.value });
+    tasksList.forEach((todo, idx) =>
+        console.log(`${idx}: ${todo.name}, ${todo.task}`)
+    );
+    const tbl = generateTable();
+
+    todoList.childNodes.forEach((child) => {
+        todoList.removeChild(child);
+    });
+    todoList.appendChild(tbl);
+    };
+
+    const generateTable = () => {
+    const tbl = document.createElement("table");
+    const tblBody = document.createElement("tbody");
+
+    tasksList.forEach((task) => {
+    const row = document.createElement("tr");
+    Object.values(task).forEach((value) => {
+      const cell = document.createElement("td");
+      const cellText = document.createTextNode(value);
+      cell.appendChild(cellText);
+      row.appendChild(cell);
+    });
+    tblBody.appendChild(row);
+  });
+  tbl.appendChild(tblBody);
+  return tbl;
+};
+    </script>
+    <style>
+        .aa{
+            border: solid 1px;
+        }
+        table{
+            border-bottom: solid 1px;
+            border-left: solid 1px;
+            border-right: solid 1px;
+        }
+        td{
+            text-align: center;
+            width: 100px;
+            background: #eee;
+        }
+        tr:nth-child(odd) td {
+            background: #fff;
+        }
+    </style>
+    <form>
+        <ul>
+          <li>
+            <label for="name">ユーザ名:</label>
+            <input type="text" id="name" name="user_name" />
+          </li>
+          <li>
+            <label for="task">タスク:</label>
+            <textarea id="task" name="user_task"></textarea>
+          </li>
+          <li class="button">
+            <button type="button" onclick="onClickButton()">登録</button>
+          </li>
+        </ul>
+      </form>
+      <table class="aa">
+          <tr><td>ユーザー名</td><td>タスク</td></tr>
+      </table>
+      <div id="todo-list"></div>
 </body>
 </html>
