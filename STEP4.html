@@ -7,6 +7,32 @@
     <title>Document</title>
 </head>
 <body>
-    
+    <script>
+        const List = []
+
+        const btn = () =>{
+            const name = document.getElementById("name")
+            const task = document.getElementById("task")
+            const Lenge = List.length
+            console.log(Lenge)
+            List.push({ name: name.value, task: task.value })
+            for (let i = -1; i<Lenge; i++) {
+                const Area = document.getElementById("TODO")
+                Area.insertAdjacentHTML("beforebegin",List)
+            }
+
+
+
+
+        }
+    </script>
+    <form action="">
+        <li>ユーザーネーム：<input type="text" id="name"></li>
+        <li>タスク：<input type="text" id="task"></li>
+        <li><button type="button" onclick="btn()">登録</button></li>
+    </form>
+    <div>
+        <p id="TODO"></p>
+    </div>
 </body>
 </html>

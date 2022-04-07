@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    const tasksList = [];
+
+    const onClickButton = () => {
+    const todoList = document.querySelector("#todo-list");
+    const name = document.querySelector("#name");
+    const task = document.querySelector("#task");
+
+    tasksList.push({ name: name.value, task: task.value });
+    tasksList.forEach((todo, idx) =>
+        console.log(`${idx}: ${todo.name}, ${todo.task}`)
+    );
+    const tbl = generateTable();
+
+    todoList.childNodes.forEach((child) => {
+        todoList.removeChild(child);
+    });
+    todoList.appendChild(tbl);
+    };
+
+    const generateTable = () => {
+    const tbl = document.createElement("table");
+    const tblBody = document.createElement("tbody");
+
+    tasksList.forEach((task) => {
+    const row = document.createElement("tr");
+    Object.values(task).forEach((value) => {
+      const cell = document.createElement("td");
+      const cellText = document.createTextNode(value);
+      cell.appendChild(cellText);
+      row.appendChild(cell);
+    });
+    tblBody.appendChild(row);
+  });
+  tbl.appendChild(tblBody);
+  return tbl;
+};
+    </script>
+    <form>
+        <ul>
+          <li>
+            <label for="name">ユーザ名:</label>
+            <input type="text" id="name" name="user_name" />
+          </li>
+          <li>
+            <label for="task">タスク:</label>
+            <textarea id="task" name="user_task"></textarea>
+          </li>
+          <li class="button">
+            <button type="button" onclick="onClickButton()">登録</button>
+          </li>
+        </ul>
+      </form>
+      <div id="todo-list"></div>
+</body>
+</html>
